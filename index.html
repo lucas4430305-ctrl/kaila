@@ -1,0 +1,408 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Missão Secreta da Kayla</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, sans-serif;
+    color: white;
+    background: linear-gradient(135deg, #10051f, #301052, #080817);
+}
+
+.container {
+    width: 100%;
+    max-width: 460px;
+    padding: 28px 22px;
+    text-align: center;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid #7944a5;
+    border-radius: 22px;
+    box-shadow: 0 0 35px #7926a944;
+}
+
+h1 {
+    color: #d9a5ff;
+    font-size: 27px;
+}
+
+h2 {
+    color: #ffd76a;
+}
+
+p {
+    line-height: 1.7;
+    color: #eeeeee;
+}
+
+button {
+    width: 100%;
+    padding: 16px;
+    margin-top: 12px;
+    border: none;
+    border-radius: 12px;
+    color: white;
+    background: linear-gradient(90deg, #8735ed, #c04cff);
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:active {
+    transform: scale(.97);
+}
+
+input {
+    width: 100%;
+    padding: 16px;
+    margin-top: 15px;
+    border-radius: 12px;
+    border: 1px solid #bd6aff;
+    background: #170d29;
+    color: white;
+    font-size: 17px;
+    text-align: center;
+    outline: none;
+}
+
+.escondido {
+    display: none;
+}
+
+#progresso {
+    height: 9px;
+    background: #39264d;
+    border-radius: 20px;
+    margin: 22px 0;
+    overflow: hidden;
+}
+
+#barra {
+    height: 100%;
+    width: 0%;
+    background: #c45aff;
+    transition: .5s;
+}
+
+.missao {
+    color: #c99aff;
+    font-size: 13px;
+    letter-spacing: 2px;
+}
+
+#resultado {
+    color: #ffe078;
+    font-weight: bold;
+}
+
+.foto {
+    width: 100%;
+    border-radius: 18px;
+    margin-top: 18px;
+    border: 3px solid #d18aff;
+    box-shadow: 0 0 25px #a52cff;
+}
+
+.confete {
+    position: fixed;
+    top: -20px;
+    font-size: 25px;
+    animation: cair 3s linear forwards;
+    pointer-events: none;
+}
+
+@keyframes cair {
+    to {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+.pequeno {
+    font-size: 12px;
+    color: #b6a3c7;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- TELA INICIAL -->
+
+    <div id="inicio">
+
+        <h1>🔐 MISSÃO SECRETA</h1>
+
+        <h2>Olá, Kayla! 👀</h2>
+
+        <p>
+            Você acaba de ser selecionada para uma missão
+            extremamente confidencial.
+        </p>
+
+        <p>
+            Existem alguns desafios esperando por você.
+            Somente quem conseguir completar todas as etapas
+            poderá descobrir o segredo final.
+        </p>
+
+        <p>⚠️ Atenção: não desista no meio do caminho!</p>
+
+        <button onclick="comecar()">
+            ACEITAR MISSÃO 🚀
+        </button>
+
+    </div>
+
+
+    <!-- ÁREA DAS MISSÕES -->
+
+    <div id="jogo" class="escondido">
+
+        <div class="missao" id="numero">
+            MISSÃO 1 DE 4
+        </div>
+
+        <div id="progresso">
+            <div id="barra"></div>
+        </div>
+
+        <h2 id="titulo"></h2>
+
+        <p id="pergunta"></p>
+
+        <input
+            id="resposta"
+            type="text"
+            placeholder="Digite sua resposta"
+            autocomplete="off"
+        >
+
+        <button onclick="verificar()">
+            CONFIRMAR RESPOSTA
+        </button>
+
+        <p id="resultado"></p>
+
+    </div>
+
+
+    <!-- SURPRESA FINAL -->
+
+    <div id="final" class="escondido">
+
+        <h1>🏆 MISSÃO CONCLUÍDA!</h1>
+
+        <h2>PARABÉNS, KAYLA!</h2>
+
+        <p>
+            Você conseguiu completar todos os desafios!
+            Mostrou que é uma pessoa muito inteligente.
+        </p>
+
+        <h1>🎁 CHEGOU A HORA...</h1>
+
+        <p>
+            Preparada para descobrir sua recompensa?
+        </p>
+
+        <!-- FOTO DA SUA GALERIA -->
+        <img
+            src="surpresa.jpg"
+            class="foto"
+            alt="Surpresa especial da Kayla"
+        >
+
+        <h1>KKKKKKKK 😂🐒</h1>
+
+        <h2>VOCÊ FOI ENGANADA!</h2>
+
+        <p>
+            Depois de tanto esforço, tantas missões
+            e tanta inteligência...
+        </p>
+
+        <p>
+            Sua recompensa é essa obra-prima! 🤣
+        </p>
+
+        <h2>O MACACO MAIS INTELIGENTE DA INTERNET! 🐒</h2>
+
+        <p>
+            Obrigado por participar, Kayla!
+            Não fique brava, era só uma brincadeira! 😂
+        </p>
+
+        <button onclick="location.reload()">
+            JOGAR NOVAMENTE 🔄
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+const missoes = [
+
+    {
+        titulo: "🕵️ PRIMEIRA MISSÃO",
+        pergunta: "Para começar, escreva seu nome.",
+        resposta: "kayla"
+    },
+
+    {
+        titulo: "🧠 TESTE DE INTELIGÊNCIA",
+        pergunta: "Quanto é 7 + 5?",
+        resposta: "12"
+    },
+
+    {
+        titulo: "😂 TESTE DE HUMOR",
+        pergunta: "Qual emoji representa uma pessoa dando muita risada? Digite 😂",
+        resposta: "😂"
+    },
+
+    {
+        titulo: "🔐 ÚLTIMA MISSÃO",
+        pergunta: "Complete a frase: O segredo está na palavra...",
+        resposta: "surpresa"
+    }
+
+];
+
+let atual = 0;
+
+
+function comecar() {
+
+    document.getElementById("inicio").classList.add("escondido");
+
+    document.getElementById("jogo").classList.remove("escondido");
+
+    mostrarMissao();
+
+}
+
+
+function mostrarMissao() {
+
+    document.getElementById("numero").innerText =
+        "MISSÃO " + (atual + 1) + " DE " + missoes.length;
+
+    document.getElementById("titulo").innerText =
+        missoes[atual].titulo;
+
+    document.getElementById("pergunta").innerText =
+        missoes[atual].pergunta;
+
+    document.getElementById("barra").style.width =
+        (atual / missoes.length * 100) + "%";
+
+    document.getElementById("resposta").value = "";
+
+    document.getElementById("resultado").innerText = "";
+
+    document.getElementById("resposta").focus();
+
+}
+
+
+function verificar() {
+
+    let resposta = document
+        .getElementById("resposta")
+        .value.trim().toLowerCase();
+
+    if (resposta === missoes[atual].resposta) {
+
+        atual++;
+
+        document.getElementById("resultado").innerText =
+            "ACERTOU! MISSÃO DESBLOQUEADA! 🎉";
+
+        if (atual === missoes.length) {
+
+            document.getElementById("barra").style.width = "100%";
+
+            setTimeout(() => {
+
+                document.getElementById("jogo").classList.add("escondido");
+
+                document.getElementById("final").classList.remove("escondido");
+
+                soltarConfetes();
+
+            }, 1000);
+
+            return;
+        }
+
+        setTimeout(mostrarMissao, 1000);
+
+    } else {
+
+        document.getElementById("resultado").innerText =
+            "RESPOSTA ERRADA! TENTE NOVAMENTE! 😂";
+
+    }
+
+}
+
+
+function soltarConfetes() {
+
+    const emojis = ["🎉", "😂", "🐒", "⭐", "🎊", "🤣"];
+
+    for (let i = 0; i < 45; i++) {
+
+        let confete = document.createElement("div");
+
+        confete.className = "confete";
+
+        confete.innerText =
+            emojis[Math.floor(Math.random() * emojis.length)];
+
+        confete.style.left = Math.random() * 100 + "vw";
+
+        confete.style.animationDelay = Math.random() * 2 + "s";
+
+        document.body.appendChild(confete);
+
+        setTimeout(() => confete.remove(), 5000);
+
+    }
+
+}
+
+
+document.getElementById("resposta").addEventListener("keydown", function(e) {
+
+    if (e.key === "Enter") {
+
+        verificar();
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>
